@@ -89,6 +89,10 @@ button{font-family:inherit; cursor:pointer; -webkit-tap-highlight-color:transpar
 .section{max-width:720px; margin:0 auto; padding:90px 22px; text-align:center;}
 .section h2{font-size:clamp(28px,6vw,40px); font-weight:500; margin:0 0 10px;}
 .section .sub{color:var(--navy-soft); font-size:16px; margin:0 0 40px;}
+.section-nav{display:flex; justify-content:center; margin-top:28px;}
+#main.step-flow .section{display:none;}
+#main.step-flow .section.active-section{display:block;}
+#main.step-flow .credits{display:none;}
 
 /* section card wrapper (one card per section) */
 .section-card{
@@ -151,13 +155,43 @@ button{font-family:inherit; cursor:pointer; -webkit-tap-highlight-color:transpar
 .giftbox.open .gift-lid{transform:translateY(-40px) rotate(-12deg);}
 .giftbox.open{filter:drop-shadow(0 0 30px rgba(255,255,255,0.9));}
 .final-text{opacity:0; max-height:0; overflow:hidden; transition:opacity .8s ease .2s, max-height .8s ease;}
-.final-text.show{opacity:1; max-height:400px;}
+.final-text.show{opacity:1; max-height:5000px;}
 .final-line{margin:8px 0; font-size:17px; color:var(--navy-soft);}
+.letter-text{text-align:left; line-height:1.75; font-size:15px;}
 .typing-line::after{content:"|"; color:var(--accent-deep); animation:blink 0.8s step-end infinite;}
 @keyframes blink{50%{opacity:0;}}
 .final-line.big{font-family:'Fraunces',serif; font-style:italic; font-size:26px; color:var(--navy);}
 
 footer.credits{text-align:center; padding:40px 20px 70px; font-size:13px; color:var(--navy-soft);}
+
+@media (max-width:600px){
+  body{font-size:15px;}
+  .music-btn{top:calc(12px + env(safe-area-inset-top,0px)); right:12px; width:44px; height:44px;}
+  .scene{padding:24px 18px;}
+  .scene h1{font-size:clamp(25px,7vw,32px);}
+  .scene p.sub{font-size:15px; margin-bottom:26px;}
+  .btn{width:100%; max-width:280px; min-width:0; padding:14px 18px; min-height:50px;}
+  .section{min-height:100svh; padding:calc(62px + env(safe-area-inset-top,0px)) 14px 28px;}
+  .section h2{font-size:clamp(27px,8vw,34px); line-height:1.15;}
+  .section .sub{font-size:15px; margin-bottom:24px;}
+  .section-card{padding:22px 14px; border-radius:24px;}
+  .love-grid{gap:10px;}
+  .love-card{border-radius:20px; padding:16px 18px;}
+  .love-title{font-size:18px;}
+  .love-msg{font-size:14px;}
+  .love-outro{margin-top:24px; font-size:18px;}
+  .quiz-card{padding:20px 12px;}
+  .quiz-q{font-size:19px;}
+  .quiz-opt{padding:13px 14px; font-size:14px;}
+  .universe{height:min(520px, calc(100svh - 190px)); min-height:420px; border-radius:26px;}
+  .universe-center .serif{font-size:19px;}
+  .mem-card{inset:auto 4% 4% 4%; padding:16px; border-radius:20px;}
+  .mem-img{height:220px; border-radius:14px;}
+  .mem-close{top:8px; right:8px;}
+  .final-line{font-size:15px;}
+  .final-line.big{font-size:22px;}
+  .section-nav{margin-top:20px;}
+}
 </style>
 </head>
 <body data-scene="welcome">
@@ -220,6 +254,7 @@ footer.credits{text-align:center; padding:40px 20px 70px; font-size:13px; color:
       <div class="love-grid" id="loveGrid"></div>
       <p class="love-outro" style="text-align:center;">And honestly... I could keep going forever. ❤️</p>
     </div>
+    <div class="section-nav"><button class="btn btn-primary" onclick="showSection('quizSection')">NEXT →</button></div>
   </section>
 
   <section class="section" id="quizSection">
@@ -229,7 +264,7 @@ footer.credits{text-align:center; padding:40px 20px 70px; font-size:13px; color:
       <div class="quiz-card" id="quizCard" style="background:transparent; backdrop-filter:none; box-shadow:none; padding:0;"></div>
       <div style="margin-top:26px;" id="quizFinal" class="quiz-final">
         <p class="sub" id="quizScoreText" style="margin-bottom:18px;">Okay... you know us pretty well. 💙</p>
-        <button class="btn btn-primary" onclick="scrollToId('universeSection')">SEE WHAT'S NEXT →</button>
+        <button class="btn btn-primary" onclick="showSection('universeSection')">SEE WHAT’S NEXT →</button>
       </div>
     </div>
   </section>
@@ -242,6 +277,7 @@ footer.credits{text-align:center; padding:40px 20px 70px; font-size:13px; color:
         <div class="universe-center"><span class="serif">YOU + ME</span> <span>💙</span></div>
       </div>
     </div>
+    <div class="section-nav"><button class="btn btn-primary" onclick="showSection('finalSection')">NEXT →</button></div>
   </section>
 
   <section class="section" id="finalSection">
@@ -255,10 +291,7 @@ footer.credits{text-align:center; padding:40px 20px 70px; font-size:13px; color:
       <p class="sub" id="giftPrompt">There's still something waiting for you 🎁</p>
       <button class="btn btn-primary" id="openGiftBtn" onclick="openGift()">OPEN IT</button>
       <div class="final-text" id="finalText">
-        <p class="final-line big">HAPPY BIRTHDAY, MY LOVE 💙</p>
-        <p class="final-line">Thank you for being one of the most beautiful parts of my life.</p>
-        <p class="final-line">And this is only the beginning...</p>
-        <p class="final-line">Here's to many more memories together. ❤️</p>
+        <p class="final-line letter-text">Heyyy pattumaaaaaa 💖💖 wish you many many more happy returns of the day 🎁🎁🥳 life long happy ahh irukanum. Adhuku na ena venalum panuven. Nee life fulla enkuda sirichitu happy ahh iru, adhu pothum enaku. Vara vara nee romba feel panra, una veliya kutitu pola, time spend pana matra nu enaku adhu lam nalla purithu. Ipo vena nee nenachathu lam enala pana mudiyama irukalam, but future la apdi irukathu. It's my promise 💯 En life la nee vandhathu la irundhu ipo varaikum nee ena kasta paduthunathu illa. Konjam misunderstandings irundhurukalam, adha ellam namba ivalo naal pesi solve pani overcome pani vandhurukom. Almost one and half years aaguthu namba relationship start pani. Idhu varaikum namba serious ah breakup panathu illa. Konja neram vilayatuku pannirukom, apram patch up panniduvom. Ini vara ellam naalum apdi dhan irukanum. Nalla sanda podalam, na unkuda dhan irupan, seriyaa. Epavum yarum illa nu feel panatha. Na sometimes kuda irundhurukalam, sometimes kuda illama irundhurukalam, but en full thought um pathi matum dhan irukum. Nee time ku saptiya, nee ena panra, nalla rest edukuriya, time ku thunguriya, nalla Thani kudichiya nu nenachite dhan irupan. Nee nenaipa na lam una miss pana maten nu, apdi illa. Nee un family trip lam pona, clg vara mata, leave poduva, anga pona seriyaa pesa mudiyathu. Ellam irupaga. Apo lam na un pic eduthu papen, namba pana msg lam thirupi padichi papan, apram nee cute ahh pana video lam enkita iruku, adha eduthu vechi papen. Enaku unkita express pana theriyathu, but ulla avalo love 💖 vechirukan un mela. En amma appa ku apram nee dhan enaku ellam. Nee ena nariya time la nalla care paniruka. Na thappu pana nee thituva, adha na kochika maten, happy ahh eduthupan. Ena nee nalla guide panuva. Apram vandi oota sona aaluva paruu 🤣 Adha pakurathukeye daily na una vandi oota solluven, theriuma, avalo cute ahh panuvaaa. Nee un life la collector aaganum nu aim vechiruka. Adhu kandipa nadakum. Adhuku na epavum supportive ahh irupan. Na sikarama job poi oru aalavuku settle aaagitu en v2la solli un v2la vandhu ponnu kepan. Surprise ahhh, nee nenacha mari dhan namba marriage nadakum. Adhuku na promise panren. Once again happy birthday pattuuuuuumaaaaaaaaaaaaaa 💖💖💖💖🫂🫂🫂🫂🥰🥰🥰😘🥰😘🥰🥰🥰😘😘😘💖🫂🫂😘🥰😘🫂🫂💖😘😘😘🥰💞🥰💞💕💕💕♥️♥️💕🥰💞💞🥰💞🥰💞💞🥰😘😘😘❤️❤️❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥😍😍😍😍😍😍🧡❤️🧡💛🖤💚🤎💚💜🩶🤍💘🩷💝💞💖💗💕💓💕💓💗💛🖤🧡🖤🖤💛💗💚💖🩵💖💙💚💜💚💜💚🤎🩵🤎🖤💙❤️❤️💙🖤🤎🤎🧡💜🧡💜🧡💜🧡💖🩷💖💝💝💞💘💕💕💟♥️💟💟💟❣️💟💟💌❣️💌♥️♥️💕♥️💞💝💖💖🤍💗🤍💓🩷🖤🩷🖤💚💗🩶💜💛💙💚💜🩵🤎🩵❤️🖤🧡❤️💗💖🩷💖🩷💝💖🩶💖💜🩶💜💖 love you 😘😘😘😘😘😘😘😘....</p>
         <button class="btn btn-secondary" style="margin-top:16px;" onclick="restartAll()">START AGAIN ↻</button>
       </div>
     </div>
@@ -336,14 +369,20 @@ function runCountdown(){
 
 function enterMain(){
   document.querySelectorAll('.scene').forEach(s=>s.classList.remove('active'));
-  document.getElementById('main').classList.add('show');
+  const main=document.getElementById('main');
+  main.classList.add('show','step-flow');
+  showSection('loveSection');
   document.body.dataset.scene='main';
-  window.scrollTo({top:0});
 }
 
-function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+function showSection(id){
+  document.querySelectorAll('#main .section').forEach(section=>section.classList.remove('active-section'));
+  document.getElementById(id).classList.add('active-section');
+}
+
+function scrollToId(id){showSection(id);}
 function restartAll(){
-  document.getElementById('main').classList.remove('show');
+  document.getElementById('main').classList.remove('show','step-flow');
   window.scrollTo({top:0});
   noTries=0;
   giftOpened=false;
@@ -479,7 +518,12 @@ const memories=[
   {label:"Mother in law home", caption:"Placeholder: Nee 1st tym official ah en v2ku vantha.", image:"img4.jpg"},
   {label:"Lovely rose", caption:"Placeholder: Nee propose pana rose.", image:"img5.jpg"},
   {label:"want this for every year", caption:"Placeholder: wish every onam wants to feels like this.", image:"img6.jpg"},
-  {label:"Wish", caption:"Placeholder: Endless luv. 💙", image:"img7.jpg"}
+  {label:"Wish", caption:"Placeholder: Endless luv. 💙", image:"img7.jpg"},
+  {label:"park", caption:"Placeholder:Na unaku first time oru flower kuduthu edhoo enaku theritha mari propose pana andha park la naybagum irukaa.", image:"img8.jpg"},
+  {label:"1st gift", caption:"Placeholder: Na unaku first first kudutha gift nee clg first year la pongal celebration vechaga apo potu vandha", image:"img9.jpg"},
+  {label:"lyf tym wish", caption:"Placeholder: oru oru bday vum namba ippo iruka mariye celebrate pannanum.", image:"img10.jpg"},
+  {label:"Recreate", caption:"Placeholder: Idha namba kandipa recreate pana num okva,idhemari yugesh,rakshi pakkathula ninnu avagaluku kalyanam panrom", image:"img11.jpg"},
+  {label:"forever", caption:"Placeholder: forever want this", image:"img12.jpg"}
 ];
 const universeBox=document.getElementById('universeBox');
 for(let i=0;i<40;i++){
@@ -497,7 +541,7 @@ memCard.innerHTML=`<button class="mem-close" onclick="closeMem()">✕</button>
   <p id="memCaption" style="margin:0; font-size:14px; color:#5a6b7d;"></p>`;
 universeBox.appendChild(memCard);
 
-const starPositions=[[12,20],[75,15],[45,10],[85,55],[20,60],[55,72],[65,38]];
+const starPositions=[[12,20],[75,15],[45,10],[85,55],[20,60],[55,72],[65,38],[30,32],[60,25],[92,25],[35,55],[70,60]];
 memories.forEach((mem,i)=>{
   const star=document.createElement('button');
   star.className='star'; star.setAttribute('aria-label',mem.label);
@@ -537,7 +581,7 @@ function startTypingAnimation(){
     line.textContent=text.slice(0,charIndex+1);
     charIndex++;
     if(charIndex<text.length){
-      setTimeout(typeNextCharacter,35);
+      setTimeout(typeNextCharacter, text.length>500 ? 8 : 35);
     } else {
       line.classList.remove('typing-line');
       lineIndex++;
