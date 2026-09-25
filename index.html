@@ -144,7 +144,7 @@ button{font-family:inherit; cursor:pointer; -webkit-tap-highlight-color:transpar
   transition:all .4s ease; z-index:5; text-align:left; max-height:88%; overflow-y:auto;
 }
 .mem-card.show{opacity:1; transform:translateY(0); pointer-events:auto;}
-.mem-img{width:100%; height:240px; border-radius:16px; margin-bottom:10px; background:linear-gradient(135deg,var(--powder),var(--lavender)); background-size:contain; background-position:center; background-repeat:no-repeat;}
+.mem-img{width:100%; height:300px; border-radius:16px; margin-bottom:10px; background:linear-gradient(135deg,var(--powder),var(--lavender)); background-size:contain; background-position:center; background-repeat:no-repeat;}
 .mem-close{position:absolute; top:10px; right:10px; background:rgba(0,0,0,0.06); border:none; border-radius:50%; width:30px; height:30px; font-size:15px;}
 
 /* final surprise */
@@ -186,7 +186,7 @@ footer.credits{text-align:center; padding:40px 20px 70px; font-size:13px; color:
   .universe{height:min(520px, calc(100svh - 190px)); min-height:420px; border-radius:26px;}
   .universe-center .serif{font-size:19px;}
   .mem-card{inset:auto 4% 4% 4%; padding:16px; border-radius:20px;}
-  .mem-img{height:220px; border-radius:14px;}
+  .mem-img{height:280px; border-radius:14px;}
   .mem-close{top:8px; right:8px;}
   .final-line{font-size:15px;}
   .final-line.big{font-size:22px;}
@@ -429,6 +429,7 @@ function tickFx(){
 /* ---------------- music control (placeholder, respects autoplay) ---------------- */
 const musicBtn=document.getElementById('musicBtn');
 let audioEl=null, playing=false;
+let pausedByVisibility=false;
 musicBtn.addEventListener('click',()=>{
   if(!audioEl){
     audioEl=document.createElement('audio');
@@ -438,6 +439,17 @@ musicBtn.addEventListener('click',()=>{
   if(playing){audioEl.pause(); musicBtn.textContent='🔇';}
   else{audioEl.play().catch(()=>{}); musicBtn.textContent='🎵';}
   playing=!playing;
+});
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden){
+    if(audioEl && playing && !audioEl.paused){
+      audioEl.pause();
+      pausedByVisibility=true;
+    }
+  } else if(pausedByVisibility && audioEl && playing){
+    audioEl.play().catch(()=>{});
+    pausedByVisibility=false;
+  }
 });
 
 /* ---------------- Things I Love About You ---------------- */
