@@ -9,18 +9,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --sky:#eef6fc; --sky2:#dcedf8; --powder:#c7e2f3; --lavender:#eae5f7; --pink:#fbe8f0;
-  --navy:#1e2d3d; --navy-soft:#4a5b6d; --accent:#5f9dd6; --accent-deep:#3f7fb8;
+  --sky:#fff7fa; --sky2:#fce5ed; --powder:#f7cbd9; --lavender:#f8e5ed; --pink:#ffdce8;
+  --navy:#442633; --navy-soft:#805766; --accent:#e38aa7; --accent-deep:#c85d80;
   --silver:#d6e0e8; --white:#ffffff;
-  --shadow: 0 20px 60px rgba(63,127,184,0.18);
-  --shadow-sm: 0 8px 24px rgba(63,127,184,0.14);
+  --shadow: 0 20px 60px rgba(200,93,128,0.18);
+  --shadow-sm: 0 8px 24px rgba(200,93,128,0.14);
   --radius: 28px;
   padding-top: env(safe-area-inset-top,0px);
   padding-bottom: env(safe-area-inset-bottom,0px);
   box-sizing:border-box;
 }
 @media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){ --sky:#eef6fc; --sky2:#dcedf8; }
+  :root:not([data-theme="light"]){ --sky:#fff7fa; --sky2:#fce5ed; }
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth; scroll-padding-top: env(safe-area-inset-top,0px);}
@@ -69,7 +69,7 @@ button{font-family:inherit; cursor:pointer; -webkit-tap-highlight-color:transpar
 
 /* reveal */
 .reveal-title{font-size:clamp(30px,7vw,46px); font-weight:400; letter-spacing:0.5px; color:var(--navy-soft);}
-.reveal-name{font-family:'Fraunces',serif; font-style:italic; font-weight:600; font-size:clamp(48px,14vw,96px); background:linear-gradient(135deg,var(--accent-deep),#8fb8de); -webkit-background-clip:text; background-clip:text; color:transparent; margin:6px 0 22px;}
+.reveal-name{font-family:'Fraunces',serif; font-style:italic; font-weight:600; font-size:clamp(48px,14vw,96px); background:linear-gradient(135deg,var(--accent-deep),#f2a7bf); -webkit-background-clip:text; background-clip:text; color:transparent; margin:6px 0 22px;}
 .reveal-note{font-size:16px; color:var(--navy-soft); margin:18px 0 30px;}
 
 /* confetti / fireworks canvas */
@@ -121,7 +121,7 @@ button{font-family:inherit; cursor:pointer; -webkit-tap-highlight-color:transpar
 .quiz-card{background:rgba(255,255,255,0.65); backdrop-filter:blur(14px); border-radius:var(--radius); padding:28px 22px; box-shadow:var(--shadow-sm); max-width:480px; margin:0 auto;}
 .quiz-progress{font-size:13px; color:var(--navy-soft); margin-bottom:14px;}
 .quiz-q{font-family:'Fraunces',serif; font-size:20px; margin:0 0 20px;}
-.quiz-opt{display:block; width:100%; text-align:left; padding:14px 18px; margin-bottom:10px; border-radius:16px; border:1px solid rgba(63,127,184,0.25); background:rgba(255,255,255,0.6); font-size:15px; min-height:48px; transition:background .25s ease, transform .2s ease;}
+.quiz-opt{display:block; width:100%; text-align:left; padding:14px 18px; margin-bottom:10px; border-radius:16px; border:1px solid rgba(200,93,128,0.25); background:rgba(255,255,255,0.6); font-size:15px; min-height:48px; transition:background .25s ease, transform .2s ease;}
 .quiz-opt:active{transform:scale(0.98);}
 .quiz-opt.correct{background:linear-gradient(135deg,#cdeee0,#e4f6ee); border-color:#a6dfc4;}
 .quiz-opt.wrong{background:linear-gradient(135deg,#f9dbe1,#fbe9ec); border-color:#eec3cc;}
@@ -130,7 +130,7 @@ button{font-family:inherit; cursor:pointer; -webkit-tap-highlight-color:transpar
 
 /* universe */
 .universe{position:relative; height:460px; border-radius:32px; overflow:hidden; margin:0 auto; max-width:640px;
-  background:radial-gradient(ellipse at 50% 20%, #24405c 0%, #1a2f47 45%, #0f2036 100%); box-shadow:var(--shadow);}
+  background:radial-gradient(ellipse at 50% 20%, #63384a 0%, #472938 45%, #2d1b27 100%); box-shadow:var(--shadow);}
 .universe-center{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; color:#eaf3fb; z-index:2;}
 .universe-center .serif{font-style:italic; font-size:22px; font-weight:400;}
 .star{position:absolute; width:14px; height:14px; z-index:3;}
@@ -150,7 +150,7 @@ button{font-family:inherit; cursor:pointer; -webkit-tap-highlight-color:transpar
 /* final surprise */
 .giftbox{width:120px; height:110px; margin:0 auto 26px; position:relative; cursor:pointer;}
 .gift-lid{position:absolute; top:-18px; left:-8px; right:-8px; height:26px; background:linear-gradient(135deg,var(--accent),var(--accent-deep)); border-radius:8px; transition:transform .5s cubic-bezier(.34,1.56,.64,1);}
-.gift-body{position:absolute; top:8px; left:0; right:0; bottom:0; background:linear-gradient(135deg,#a9cdea,var(--accent)); border-radius:10px;}
+.gift-body{position:absolute; top:8px; left:0; right:0; bottom:0; background:linear-gradient(135deg,#f3b8cb,var(--accent)); border-radius:10px;}
 .gift-ribbon{position:absolute; top:8px; bottom:0; left:50%; width:16px; margin-left:-8px; background:rgba(255,255,255,0.75);}
 .giftbox.open .gift-lid{transform:translateY(-40px) rotate(-12deg);}
 .giftbox.open{filter:drop-shadow(0 0 30px rgba(255,255,255,0.9));}
@@ -304,7 +304,7 @@ footer.credits{text-align:center; padding:40px 20px 70px; font-size:13px; color:
 /* ---------------- particles (hearts) ---------------- */
 (function(){
   const field=document.getElementById('particleField');
-  const glyphs=['💙','✦','·'];
+  const glyphs=['💖','💝','✦'];
   for(let i=0;i<14;i++){
     const el=document.createElement('div');
     el.className='particle';
@@ -400,7 +400,7 @@ function resizeCanvas(){canvas.width=innerWidth; canvas.height=innerHeight;}
 resizeCanvas(); addEventListener('resize',resizeCanvas);
 let fxParticles=[];
 function launchConfetti(big){
-  const colors=['#5f9dd6','#bfe0f5','#eae5f7','#fbe8f0','#ffffff'];
+  const colors=['#e38aa7','#f7cbd9','#f8e5ed','#ffdce8','#ffffff'];
   const count=big? 90:50;
   for(let i=0;i<count;i++){
     fxParticles.push({
@@ -524,18 +524,18 @@ renderQuiz();
 
 /* ---------------- Our Little Universe ---------------- */
 const memories=[
-  {label:"1st Proposal", caption:"Placeholder: Committed aagi first time beach ku ponom apo ne propose panna.", image:"img1.jpg"},
-  {label:"Unforgatable place", caption:"Placeholder:Intha day ah marakave maten 'pattinapakkam' .", image:"img2.jpg"},
-  {label:"fav spot", caption:"Placeholder: Namba spot neraya secrets iruku", image:"img3.jpg"},
-  {label:"Mother in law home", caption:"Placeholder: Nee 1st tym official ah en v2ku vantha.", image:"img4.jpg"},
-  {label:"Lovely rose", caption:"Placeholder: Nee propose pana rose.", image:"img5.jpg"},
-  {label:"want this for every year", caption:"Placeholder: wish every onam wants to feels like this.", image:"img6.jpg"},
-  {label:"Wish", caption:"Placeholder: Endless luv. 💙", image:"img7.jpg"},
-  {label:"park", caption:"Placeholder:Na unaku first time oru flower kuduthu edhoo enaku theritha mari propose pana andha park la naybagum irukaa.", image:"img8.jpg"},
-  {label:"1st gift", caption:"Placeholder: Na unaku first first kudutha gift nee clg first year la pongal celebration vechaga apo potu vandha", image:"img9.jpg"},
-  {label:"lyf tym wish", caption:"Placeholder: oru oru bday vum namba ippo iruka mariye celebrate pannanum.", image:"img10.jpg"},
-  {label:"Recreate", caption:"Placeholder: Idha namba kandipa recreate pana num okva,idhemari yugesh,rakshi pakkathula ninnu avagaluku kalyanam panrom", image:"img11.jpg"},
-  {label:"forever", caption:"Placeholder: forever want this", image:"img12.jpg"}
+  {label:"1st Proposal", caption:": Committed aagi first time beach ku ponom apo ne propose panna.", image:"img1.jpg"},
+  {label:"Unforgatable place", caption:"Intha day ah marakave maten 'pattinapakkam' .", image:"img2.jpg"},
+  {label:"fav spot", caption:"Namba spot neraya secrets iruku", image:"img3.jpg"},
+  {label:"Mother in law home", caption:" Nee 1st tym official ah en v2ku vantha.", image:"img4.jpg"},
+  {label:"Lovely rose", caption:" Nee propose pana rose.", image:"img5.jpg"},
+  {label:"want this for every year", caption:" wish every onam wants to feels like this.", image:"img6.jpg"},
+  {label:"Wish", caption:"Endless luv. 💙", image:"img7.jpg"},
+  {label:"park", caption:"Na unaku first time oru flower kuduthu edhoo enaku theritha mari propose pana andha park la naybagum irukaa.", image:"img8.jpg"},
+  {label:"1st gift", caption:" Na unaku first first kudutha gift nee clg first year la pongal celebration vechaga apo potu vandha", image:"img9.jpg"},
+  {label:"lyf tym wish", caption:" oru oru bday vum namba ippo iruka mariye celebrate pannanum.", image:"img10.jpg"},
+  {label:"Recreate", caption:" Idha namba kandipa recreate pana num okva,idhemari yugesh,rakshi pakkathula ninnu avagaluku kalyanam panrom", image:"img11.jpg"},
+  {label:"forever", caption:" forever want this", image:"img12.jpg"}
 ];
 const universeBox=document.getElementById('universeBox');
 for(let i=0;i<40;i++){
